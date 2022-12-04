@@ -1,0 +1,48 @@
+GAE:
+
+index.py
+
+print("""
+
+<html>
+<head>
+<script>
+function SI(){
+var p, q, t, val;
+p = document.getElementById("p").value;
+q = document.getElementById("q").value;
+t = document.getElementById("t").value;
+val = (p* q * t) / 100.0;
+
+document.getElementById("res").innerHTML = val;
+}
+</script>
+<body>
+<label>principal</lable>
+<input type="number" id="p"/>
+<br>
+<label>interest</lable>
+<input type="number" id="q"/>
+<br>
+<label>time</lable>
+<input type="number" id="t"/>
+<br>
+<input type="submit" onclick="SI()"/>
+<br>
+<p id="res"></p>
+
+</body>
+</html>
+""")
+
+app.yaml
+
+runtime: python27
+api_version: 1
+threadsafe: false
+handlers:
+
+- url: /.*
+  script: index.py
+
+Command: google-cloud-sdk\bin\dev_appserver.py "C:\Users\Swathi\Desktop\gae"
